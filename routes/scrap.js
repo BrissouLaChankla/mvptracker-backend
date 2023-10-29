@@ -1,11 +1,8 @@
-var express = require('express');
-var router = express.Router();
 const fetch = require('node-fetch');
 const puppeteer = require('puppeteer');
 
 
-
-router.get('/games', function (req, res) {
+export default function handler(req, res) {
 
     function delay(time) {
         return new Promise(function (resolve) {
@@ -130,12 +127,11 @@ router.get('/games', function (req, res) {
                 });
 
         });
-
-        return res.json({result:true, message:"Tout s'est bien passé"})
+        res.status(200).end('Tout s\'est bien passé');
+        // return res.json({result:true, message:"Tout s'est bien passé"})
 
     })();
 
 
-});
+};
 
-module.exports = router;
