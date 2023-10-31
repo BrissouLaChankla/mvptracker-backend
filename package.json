@@ -6,7 +6,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "chrome-aws-lambda": "^10.1.0",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
@@ -16,6 +15,5 @@
     "morgan": "~1.9.1",
     "node-fetch": "2.6.1",
     "puppeteer": "^21.4.1",
-    "puppeteer-core": "^21.4.1"
   }
 }
