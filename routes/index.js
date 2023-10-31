@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const Game = require('../models/game');
+const Update = require('../models/update');
 
 router.post('/storeGames', function (req, res) {
 
@@ -21,6 +22,14 @@ router.post('/storeGames', function (req, res) {
       newGame.save().then(() => {
         res.json({ result: true, message: "Nouvelle game ajoutée en BDD !" });
       })
+
+    const newUpdate = new Update({
+      lastUpdate: new Date()
+    });
+    
+    newUpdate.save().then(() => {
+      console.log("lets go new update")
+    });
     }
 
   })
