@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
-
+const dayjs = require('dayjs')
+require('dayjs/locale/fr')
+const relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.locale('fr')
+dayjs.extend(relativeTime)
 const Game = require('../models/game');
 const Update = require('../models/update');
 
@@ -43,7 +47,7 @@ router.get('/fetchGames', function (req, res) {
 
 router.get('/getLastUpdate', function (req, res) {
   Update.findOne({}).then(data => {
-    res.json({ result: true, lastUpdate: data.lastUpdate });
+    res.json({ result: true, lastUpdate: dayjs().to(dayjs(data.lastUpdate)) });
   });
 });
 
