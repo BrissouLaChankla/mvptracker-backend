@@ -11,14 +11,12 @@ function delay(time) {
 router.get('/games', (req, res) => {
 
 
-    
-    
     let gamesFound = 0;
     let results = [];
     
     
     (async () => {
-        const browser = await puppeteer.launch({ headless: "new" });
+        const browser = await puppeteer.launch({ headless: true });
         const page = await browser.newPage();
     
         // Bepo
