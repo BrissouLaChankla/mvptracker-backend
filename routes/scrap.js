@@ -1,17 +1,16 @@
 const fetch = require('node-fetch');
-// const puppeteer = require('puppeteer');
-const puppeteer = require('puppeteer-core');
+const puppeteer = require('puppeteer');
 var express = require('express');
 var router = express.Router();
-const {executablePath} = require('puppeteer')
+function delay(time) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, time)
+    });
+}
 
 router.get('/games', (req, res) => {
 
-    function delay(time) {
-        return new Promise(function (resolve) {
-            setTimeout(resolve, time)
-        });
-    }
+
     
     
     let gamesFound = 0;
@@ -19,15 +18,7 @@ router.get('/games', (req, res) => {
     
     
     (async () => {
-
-        const chromium = require('chrome-aws-lambda');
-
-        const browser = await puppeteer.launch({
-            headless: true, // Mettez à jour cette option en fonction de vos besoins
-            executablePath: executablePath(),
-            args: chromium.args,
-            defaultViewport: chromium.defaultViewport,
-        });
+        const browser = await puppeteer.launch({ headless: "new" });
         const page = await browser.newPage();
     
         // Bepo
