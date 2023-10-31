@@ -41,7 +41,11 @@ router.get('/fetchGames', function (req, res) {
   });
 });
 
-
+router.get('/getLastUpdate', function (req, res) {
+  Update.findOne({}).then(data => {
+    res.json({ result: true, lastUpdate: data.lastUpdate });
+  });
+});
 
 
 
