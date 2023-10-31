@@ -1,8 +1,9 @@
 const fetch = require('node-fetch');
-const puppeteer = require('puppeteer');
+// const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 var express = require('express');
 var router = express.Router();
-
+const {executablePath} = require('puppeteer')
 
 router.get('/games', (req, res) => {
 
@@ -18,7 +19,15 @@ router.get('/games', (req, res) => {
     
     
     (async () => {
-        const browser = await puppeteer.launch({ headless: "new" });
+
+        const chromium = require('chrome-aws-lambda');
+
+        const browser = await puppeteer.launch({
+            headless: true, // Mettez à jour cette option en fonction de vos besoins
+            executablePath: executablePath(),
+            args: chromium.args,
+            defaultViewport: chromium.defaultViewport,
+        });
         const page = await browser.newPage();
     
         // Bepo
