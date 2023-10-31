@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "crons": [
-    {
-      "path": "/scrap/games",
-      "schedule": "0 5 * * *"
-    }
-  ],
   "builds": [
     {
       "src": "app.js",
