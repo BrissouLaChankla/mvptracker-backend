@@ -1,16 +1,21 @@
-
 {
   "version": 2,
-  "crons": [{
-    "path": "/routes/scrap",
-    "schedule": "0 */4 * * *"
-  }],
-    "builds": [{
+  "crons": [
+    {
+      "path": "/api/scrap",
+      "schedule": "0 */4 * * *"
+    }
+  ],
+  "builds": [
+    {
       "src": "app.js",
       "use": "@vercel/node"
-    }],
-    "routes": [{
+    }
+  ],
+  "routes": [
+    {
       "src": "/(.*)",
       "dest": "app.js"
-    }]
-   }
+    }
+  ]
+}

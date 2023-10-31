@@ -1,16 +1,14 @@
 const fetch = require('node-fetch');
 const puppeteer = require('puppeteer');
-var express = require('express');
-var router = express.Router();
 
-
-router.get('/games', (req, res) => {
+export default function handler(req, res) {
 
     function delay(time) {
         return new Promise(function (resolve) {
             setTimeout(resolve, time)
         });
     }
+    
     
     
     let gamesFound = 0;
@@ -114,7 +112,8 @@ router.get('/games', (req, res) => {
     
     
     
-        results.forEach(game => {
+        results.forEach((game,i) => {
+    
             for(const value of game.values){
                 if (value.name == "Skander Gυissi") {
                     value.name = "Bepo"
@@ -151,6 +150,5 @@ router.get('/games', (req, res) => {
     
 
 
-});
+};
 
-module.exports = router;
