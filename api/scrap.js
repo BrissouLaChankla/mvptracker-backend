@@ -16,7 +16,7 @@ export default function handler(req, res) {
     
     
     (async () => {
-        const browser = await puppeteer.launch({ headless: true });
+        const browser = await puppeteer.launch({ headless: "new" });
         const page = await browser.newPage();
     
         // Bepo
